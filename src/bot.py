@@ -70,7 +70,7 @@ rot_handler = FlushingTimedRotatingFileHandler(
     when="midnight",
     interval=1,
     backupCount=30,
-    encoding="utf-8"
+    encoding="utf-8-sig"
 )
 rot_handler.setFormatter(formatter)
 logger.addHandler(rot_handler)
@@ -82,7 +82,7 @@ logger.addHandler(stream_handler)
 def load_app_config() -> dict:
     if os.path.exists(CONFIG_FILE):
         try:
-            with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+            with open(CONFIG_FILE, "r", encoding="utf-8-sig") as f:
                 return json.load(f)
         except Exception:
             pass
@@ -103,7 +103,7 @@ DEFAULT_POINTS_GOAL = int(APP_CONFIG.get("points_goal", 1750))
 def load_completed_classes() -> set:
     if os.path.exists(COMPLETED_CLASSES_FILE):
         try:
-            with open(COMPLETED_CLASSES_FILE, "r", encoding="utf-8") as f:
+            with open(COMPLETED_CLASSES_FILE, "r", encoding="utf-8-sig") as f:
                 data = json.load(f)
                 if isinstance(data, list):
                     logger.info(f"[Storage] Loaded {len(data)} completed classes from {COMPLETED_CLASSES_FILE}")
@@ -122,7 +122,7 @@ def mark_class_completed(class_title: str):
     if class_title not in completed:
         completed.add(class_title)
         try:
-            with open(COMPLETED_CLASSES_FILE, "w", encoding="utf-8") as f:
+            with open(COMPLETED_CLASSES_FILE, "w", encoding="utf-8-sig") as f:
                 json.dump(sorted(list(completed)), f, indent=2)
             logger.info(f"[CompletedClasses] Successfully logged '{class_title}' in {COMPLETED_CLASSES_FILE}")
         except Exception as e:
@@ -132,7 +132,7 @@ def mark_class_completed(class_title: str):
 def load_session_state() -> dict:
     if os.path.exists(SESSION_STATE_FILE):
         try:
-            with open(SESSION_STATE_FILE, "r", encoding="utf-8") as f:
+            with open(SESSION_STATE_FILE, "r", encoding="utf-8-sig") as f:
                 return json.load(f)
         except Exception:
             pass
@@ -141,7 +141,7 @@ def load_session_state() -> dict:
 
 def save_session_state(state: dict):
     try:
-        with open(SESSION_STATE_FILE, "w", encoding="utf-8") as f:
+        with open(SESSION_STATE_FILE, "w", encoding="utf-8-sig") as f:
             json.dump(state, f, indent=2)
     except Exception as e:
         logger.warning(f"[State] Error saving session state: {e}")

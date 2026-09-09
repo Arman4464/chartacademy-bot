@@ -18,7 +18,7 @@ from datetime import datetime
 
 # Ensure UTF-8 output for Windows console
 try:
-    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stdout.reconfigure(encoding='utf-8-sig')
 except Exception:
     pass
 
@@ -159,7 +159,7 @@ def run_healthcheck():
     completed_count = 0
     if os.path.exists(completed_file):
         try:
-            with open(completed_file, "r", encoding="utf-8") as f:
+            with open(completed_file, "r", encoding="utf-8-sig") as f:
                 c_data = json.load(f)
                 completed_count = len(c_data)
         except Exception:
@@ -168,7 +168,7 @@ def run_healthcheck():
     points_record = {"points": 0, "goal": 1750, "remaining": 1750, "progress_pct": 0}
     if os.path.exists(points_file):
         try:
-            with open(points_file, "r", encoding="utf-8") as f:
+            with open(points_file, "r", encoding="utf-8-sig") as f:
                 p_data = json.load(f)
                 if p_data:
                     points_record = p_data[-1]

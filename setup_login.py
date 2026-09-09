@@ -1,4 +1,4 @@
-﻿"""
+"""
 One-Time Setup Script for ChartAcademy
 Launches standard Google Chrome directly (WITHOUT automation wrappers)
 so Google's bot detection is completely bypassed and allows 100% smooth login.
@@ -12,7 +12,7 @@ import subprocess
 import time
 
 try:
-    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stdout.reconfigure(encoding="utf-8-sig")
 except Exception:
     pass
 
@@ -38,7 +38,7 @@ def find_chrome() -> str:
 def load_config() -> dict:
     if os.path.exists(CONFIG_PATH):
         try:
-            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            with open(CONFIG_PATH, "r", encoding="utf-8-sig") as f:
                 return json.load(f)
         except Exception:
             pass

@@ -1,4 +1,4 @@
-﻿"""
+"""
 ChartAcademy Leaderboard & Points Tracker
 Navigates to https://app.chartacademy.com/leaderboard, extracts Academy Points,
 tracks daily progress towards the goal of 1750, and persists history in data/points_tracker.json.
@@ -27,7 +27,7 @@ POINTS_LOG_FILE = os.path.join(DATA_DIR, "points_tracker.json")
 def load_points_history() -> list:
     if os.path.exists(POINTS_LOG_FILE):
         try:
-            with open(POINTS_LOG_FILE, "r", encoding="utf-8") as f:
+            with open(POINTS_LOG_FILE, "r", encoding="utf-8-sig") as f:
                 data = json.load(f)
                 if isinstance(data, list):
                     return data
@@ -39,7 +39,7 @@ def load_points_history() -> list:
 def save_points_history(history: list):
     os.makedirs(DATA_DIR, exist_ok=True)
     try:
-        with open(POINTS_LOG_FILE, "w", encoding="utf-8") as f:
+        with open(POINTS_LOG_FILE, "w", encoding="utf-8-sig") as f:
             json.dump(history, f, indent=2)
     except Exception as e:
         print(f"[PointsTracker] Warning saving points log: {e}")

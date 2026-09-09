@@ -1,4 +1,4 @@
-﻿"""
+"""
 Discord Notification Module for ChartAcademy Bot
 Supports sending rich, trader-aesthetic Discord alerts via Webhook:
 - Clean completion summary with visual progress bar, streak counter, and goal projections
@@ -24,7 +24,7 @@ POINTS_LOG_FILE = os.path.join(PROJECT_ROOT, "data", "points_tracker.json")
 def load_config() -> dict:
     if os.path.exists(CONFIG_PATH):
         try:
-            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            with open(CONFIG_PATH, "r", encoding="utf-8-sig") as f:
                 return json.load(f)
         except Exception as e:
             logger.warning(f"[Notify] Error reading config.json: {e}")
@@ -47,7 +47,7 @@ def calculate_streak_and_projection(points_record: dict) -> dict:
 
     if os.path.exists(POINTS_LOG_FILE):
         try:
-            with open(POINTS_LOG_FILE, "r", encoding="utf-8") as f:
+            with open(POINTS_LOG_FILE, "r", encoding="utf-8-sig") as f:
                 history = json.load(f)
                 if isinstance(history, list) and history:
                     # Calculate streak based on dates
