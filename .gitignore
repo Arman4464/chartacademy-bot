@@ -1,0 +1,37 @@
+﻿# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Dedicated Chrome Automation Profile (contains session tokens & cookies)
+.chartacademy_profile/
+*/.chartacademy_profile/
+
+# Logs & Screenshots
+logs/*.log*
+logs/screenshots/*
+!logs/.gitkeep
+
+# Session Runtime State
+data/session_state.json
+
+# Private configuration (Contains personal Discord Webhooks & credentials)
+# Copy config.example.json to config.json for local setup
+config.json
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE configuration
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

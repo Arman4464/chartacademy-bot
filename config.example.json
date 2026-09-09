@@ -1,0 +1,8 @@
+﻿{
+  "discord_webhook_url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN",
+  "google_account": "your_email@gmail.com",
+  "points_goal": 1750,
+  "watch_duration_minutes": 32,
+  "min_pure_playback_minutes": 30.1,
+  "log_retention_days": 30
+}
